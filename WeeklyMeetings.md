@@ -5,36 +5,29 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
-### Date: [INSERT DATE OF MEETING]
+
+### Date: [26.06.2018]
 
 
 #### What did you achieve this week?
 
-* Replace this text with a bullet point list of what you achieved this week.
-* A negative result is also a result! 
+* I looked into related articles and used methods to determine the network for classification task. I started to work on ResNet but I did not get any result yet.
+* Learned the usage of ROC curve.
 
 #### What did you struggle with?
 
-* Replace this text with a bullet point list of where you struggled this week.
-* It's ok if your list is only one bullet point long!
+* While reading paper about crowd disagreement, I have difficulty to understand graphs. I needed to look at the logical background and interpretation of the graphs. 
 
 #### What would you like to work on next week?
 
-* Replace this text with a bullet point list of what you would like to work on next week.
-* It's ok if your list is only one bullet point long!
-* Try to estimate how long each task will take.
+* To work on a classification task. I am planning to train and get result until end of next week.
+* If it will finish in next week, I would like to read this paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7591569
 
 #### Where do you need help?
 
-* Replace this text with a bullet point list of what you need help from your supervisor on.
-* It's ok if your list is only one bullet point long!
-* Try to estimate how long each task will take.
+* After training the algorithm how can I understand is the algorithm successful or not? Which rate is good?
 
 #### Any other topics
-
-This space is yours to add to as needed.
-
-
 
 
 ### Credit
