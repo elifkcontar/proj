@@ -5,6 +5,30 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [02.07.2018]
+
+
+#### What did you achieve this week?
+
+* I connected to the server and learned how to copy and edit a file using local computer and server. 
+* I was getting dimension error in my code and I solved the problem. I am using ResNet from keras library which is trained using dataset with 1000 classes. However, I was trying to use it for binary classification. I solved the problem using additional top level layer.
+* I rewrote the project description.
+
+#### What did you struggle with?
+
+* I lost a lot of time while working on dimension error, however it is solved now.
+* I have problem with version of my tensorflow, I am going to ask to Koen.
+
+#### What would you like to work on next week?
+
+* I am planning to obtain and plot train/validation loss curves. 
+
+#### Where do you need help?
+
+* I don’t have enough information about multitask learning. Maybe to start reading about it it helps me to better understand the problem and is good for the next weeks. Could you suggest me a reading?
+
+#### Any other topics
+
 
 ### Date: [26.06.2018]
 
