@@ -5,6 +5,29 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [09.07.2018]
+
+
+#### What did you achieve this week?
+
+* I obtained loss and accuracy curves but these curves show that the model does not train apparently. Training and validation loss/accuracy was remaining constant during the epochs. Then, I realised that data in each batches are belong to the same class. So, I shuffled the dataset. This solved the constant loss/accuracy problem and I obtained better loss curve however problem in accuracy curve still continue. Even the training accuracy is increasing by every epoch, validation accuracy is just fluctuates.
+
+#### What did you struggle with?
+
+* When I was looking for a problem in the model, tried to change parameters such as batch number, learning rate and optimizer. At the end I cannot find the problem and I am feeling like I am changing these parameters randomly.
+
+#### What would you like to work on next week?
+
+* I should solve the problems about the model first.
+* I am going to start writing an introduction for the report which explains project. 
+
+#### Where do you need help?
+
+*  As I have explained above part, I need to analyze the curves properly in order to determine the problem and find a solution. Tomorrow I have a meeting with Mitko, I am planning to ask him. Also, I am open to the suggestions.
+
+#### Any other topics
+
+
 ### Date: [02.07.2018]
 
 
