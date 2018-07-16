@@ -5,6 +5,28 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [16.07.2018]
+
+
+#### What did you achieve this week?
+
+* I changed model from ResNet to VGG16 due to limitation of ram. I was using batch_size=10 with residual network because ram does not allow to use larger batch size. VGG16 is less deeper than resnet and now I can increase the batches.
+* Plot the confusion matrix and ROC graph to visualise the result of the model.
+* I realised that model always predict the same class even I obtained accuracy around 0.8. Reason of high accuracy was unbalanced dataset (120 non-melanoma/150 total). I set the class weights which are inversely proportional to the number of classes while training the model.
+* I was using the pre-trained model from keras and I trained the all layers together last week. However, larger gradients at first steps may cause trouble for pre-trained weights. Therefore,  I set pre-trained layers as non-trainable for fine tuning the model. 
+
+#### What did you struggle with?
+*
+#### What would you like to work on next week?
+
+* I am going to create a dataset with cropped images and I’ll learn the methods for this.
+* I’ll write the introduction which explains the method and dataset.
+
+#### Where do you need help?
+*
+#### Any other topics
+
+
 ### Date: [09.07.2018]
 
 
