@@ -9,3 +9,6 @@ As a starting point, I work up skin lesion classification. For this purpose, I r
 As  an evaluation metric ROC AUC can be used for this part.
 
 Secondly, ABC feature scores which are obtained from different annotators are exist in dataset. These features have information about whether lesion is melanoma or not. Aim of the project is improve the accuracy of classification by using these features. However, to obtain these features from annotators everytime is not efficient way. Therefore, they should be predicted and used as an input for classification. And these processes will work in parallel.
+
+For introduction
+https://docs.google.com/document/d/1vpkeLOE9TGPD60vVkt1V31B5VhHm41phCnWM0klG4VA/edit?usp=sharing
