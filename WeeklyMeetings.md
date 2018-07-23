@@ -5,6 +5,30 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [23.07.2018]
+
+
+#### What did you achieve this week?
+
+* I balanced dataset by copying third times all the images under melanoma class. Secondly, I divide the training process into two. First I trained only last 5 layers during 270 epoch  and then, I trained all layers together during 60 epoch.
+* I obtained the confusion matrix and ROC curve. Roc score is around 0.86 however, these results are obtained using validation data in order to test. I am adding the results.
+* I wrote an introduction as we discussed.
+
+#### What did you struggle with?
+*
+#### What would you like to work on next week?
+
+* For the next step I’ll need to use functional model of keras but I am not familiar with it. I am planning to learn how to build functional models with multiple outputs
+* I’ll write a custom generator.
+* I will normalize and average feature scores.
+
+#### Where do you need help?
+
+* Could you give feedback for introduction?
+
+#### Any other topics
+
+
 ### Date: [16.07.2018]
 
 
