@@ -5,6 +5,23 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [30.07.2018]
+
+
+#### What did you achieve this week?
+
+* I wrote custom generator to read images batch by batch.
+* I built regression model to predict asymmetry scores from images. I have started to train the model but I did not obtain valuable result yet. 
+
+#### What did you struggle with?
+*
+#### What would you like to work on next week?
+
+* If I finish the regression task I’ll start to work on multi target problem. 
+
+#### Where do you need help?
+*
+
 ### Date: [23.07.2018]
 
 
