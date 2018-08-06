@@ -5,6 +5,28 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [06.08.2018]
+
+
+#### What did you achieve this week?
+
+* I was working on regression problem to predict asymmetry scores. Generally model didn’t learn anything(error graph didn’t improve by epoch) but still I looked at the correlation between predicted and ground truth scores and there was no correlation. 
+
+* I thought that firstly to overfit the model is a good starting point. I removed data augmentation and trained model over 500 epoch and model was overfitting. Afterthat, I repeated same training process with data augmentation and error graph was flat. There was only fluctuations. Then, I decided to add those transformations one by one. Now, I am working on it.
+
+#### What did you struggle with?
+
+* Model have alternated between overfitting and flat error graph. Solution I applied for one of them was created the other problem. 
+
+#### What would you like to work on next week?
+
+* I think I should finish what I am working on but I can’t predict approximate time to finish it. 
+
+#### Where do you need help?
+*
+#### Any other topics
+
+
 ### Date: [30.07.2018]
 
 
