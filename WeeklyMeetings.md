@@ -5,6 +5,29 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [13.08.2018]
+
+#### What did you achieve this week?
+
+* I obtained meaningful results from regression task. I added the error graph and correlation plot. Correlation coefficient is around 0.36. It is not so good but better than random.
+
+* I started to combine classification and regression(only asymmetry) tasks. I am planning to use all the images for multitask however only some of them has asymmetry scores. I obtained a mask array that indicates missing labels and added to the loss function . So error will not be propagated for those labels.
+
+#### What did you struggle with?
+
+* I have difficulty in writing loss function.
+
+#### What would you like to work on next week?
+
+* I would like to continue to write custom loss function.
+
+* To predict asymmetry score I changed some parameters of the model because it did not learn with old(classification) parameters. Also, all scored images belong to the training set. I’ll resplit training set to train, validation and test. Then, I should re-train the model with new parameters and dataset for classification task to obtain comparable result.
+
+#### Where do you need help?
+*
+#### Any other topics
+
+
 ### Date: [06.08.2018]
 
 
