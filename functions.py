@@ -1,30 +1,9 @@
-
-
-import tensorflow as tf
-import keras.backend.tensorflow_backend
-gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.55)
-session = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
-keras.backend.tensorflow_backend.set_session(session)
-
 import pandas as pd
-import matplotlib.pyplot as plt
 import random
 from sklearn import preprocessing
-from keras.layers import Input, Dense
-from keras.models import Model
-from keras.layers.merge import concatenate
-from keras.utils import plot_model
-from keras import losses
 from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
-
 import numpy as np
-from skimage import util
-from skimage import exposure
-from skimage.transform import rotate
-from scipy.misc import imresize
-from scipy.misc import imsave
-
 
 def file_list():	
 	#Label-Asymmetry Score
