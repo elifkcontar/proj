@@ -5,6 +5,25 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [21.08.2018]
+
+#### What did you achieve this week?
+
+* I built two identical models as we discussed last week. Firstly, I trained the first model on one batch and copy the weights to the other one. Secondly, the other model was trained with the same batch and updated weights were copying to the first model. However, I faced a ram problem. Ram usage is increasing with every iteration. As a result, after ~20 iterations process is cut. I have tried to increase ram usage fraction but it only helped for few iterations. 
+
+* After I was stuck in ram problem and can't solve for a while, I continued to improve the one model with multi-output (we had changed this method because I couldn’t handle with multi-loss and missing label issues). I found a solution for problems and the model is working now.
+
+#### What did you struggle with?
+
+* I have no idea about the ram problem. 
+
+#### What would you like to work on next week?
+
+* I can continue with fine-tuning the model which is working now and then compare with the previous results. Or I could solve the ram issue and continue with that method. I don’t know which one gives a better result. What do you suggest me to do?
+
+#### Where do you need help?
+*
+
 ### Date: [13.08.2018]
 
 #### What did you achieve this week?
