@@ -5,6 +5,22 @@ Copy/paste and fill in the template below each week, BEFORE coming to the weekly
 
 ## Template
 
+### Date: [27.08.2018]
+### What did you achieve this week?
+
+* Multitask model has started to work and I obtained roc score. Also, I re-trained classification task with new inputs to obtain more comparable results. 
+
+* Result of the model is changing when I repeat the training. So, I repeated training 5 times and compare the result of multask and classification task. I'm adding the result.
+
+### What did you struggle with?
+
+### What would you like to work on next week?
+
+* I am planning to prepare presentation until Thursday.
+
+### Where do you need help?
+
+
 ### Date: [21.08.2018]
 
 #### What did you achieve this week?
