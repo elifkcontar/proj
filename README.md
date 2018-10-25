@@ -20,10 +20,12 @@ It contains 3 files related with classification task.
 data.py: It reads binary label and image, yield (label, image) by  using custom generator
 classification_model.py: Model with two steps(with and without freezing) and one output
 evaluate.py: Test the model, plot confusion matrix and roc curve
+
 **multitask:**
 data.py: It reads binary label, asymmetry label and image, yield (image, binary_label, asymmetry_label, mask) by  using custom generator. Mask term is used for missing asymmetry labels and returned as sample_weight.
 classification_model.py: Model with two steps(with and without freezing) and two output
 evaluate.py: Test the model, plot/calculate confusion matrix, roc curve/score and correlation coefficient
+
 **other files: functions.py, reg_first.py, reg_second.py, predict.py**
 These files are related with regression task to predict asymmetry score. 
 Functions.py: Same as data.py
