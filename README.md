@@ -46,5 +46,5 @@ reg_first, reg_second: Two steps of training(with and without freezing) in order
 predict.py: Same with evaluate.py
 
 # Summary of other files
-**@README:** Notes that orient any newcomers to the project.<br/>
-**@TODO:** list of future improvements and bug fixes you plan to make.<br/>
+**README:** Notes that orient any newcomers to the project.<br/>
+**TODO:** list of future improvements and bug fixes you plan to make.<br/>
