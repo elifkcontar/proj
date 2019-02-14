@@ -13,13 +13,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-#Read data
 train_id, train_label_c, valid_id, valid_label_c, test_id, test_label_c=main()
-
-train=generate_data(directory='/home/ekcontar/dat/', augmentation=True, shuffle=True, batch_size=10, file_list=train_id, label_1=train_label_c)
-
-validation=generate_data(directory='/home/ekcontar/dat/', augmentation=False, shuffle=True, batch_size=10, file_list=valid_id, label_1=valid_label_c)
-
+train=generate_data(directory='./input/images/', augmentation=True, shuffle=True, batch_size=10, file_list=train_id, label_1=train_label_c)
+validation=generate_data(directory='./input/images/', augmentation=False, shuffle=True, batch_size=10, file_list=valid_id, label_1=valid_label_c)
 
 #Build the model
 img_height, img_width, img_channel=384,384,3
@@ -123,5 +119,3 @@ with open("class", "w") as json_file:
 # serialize weights to HDF5
 loaded_model.save_weights("class.h5")
 print("Saved second model to disk")
-
-

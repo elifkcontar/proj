@@ -1,0 +1,14 @@
+
+__pycache__/functions.cpython-37.pyc
+
+*.pyc
+
+*.jpg
+
+*.xlsx
+
+*.csv
+
+classification_task/.ipynb_checkpoints/classification-task-checkpoint.ipynb
+
+/env/*

@@ -13,7 +13,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 def main():
 
-	class_id, class_label=mask_label()	
+	class_id, class_label=mask_label()
 	class_id_=[]
 	class_label_=[]
 
@@ -26,25 +26,25 @@ def main():
 
 	train_id=class_id_[:-600]	#1400 training
 	train_label_c=class_label_[:-600]
-	
+
 	valid_id=class_id_[1400:1750]	#350 valid
 	valid_label_c=class_label_[1400:1750]
 
 	test_id=class_id_[1750:]	#250 test
 	test_label_c=class_label_[1750:]
-	
+
 
 	return(train_id, train_label_c, valid_id, valid_label_c, test_id, test_label_c)
 
-def mask_label():	
+def mask_label():
 	#Label-Asymmetry Score
-	df_1=pd.read_excel('/home/ekcontar/group/group01.xlsx')
-	df_2=pd.read_excel('/home/ekcontar/group/group02.xlsx')
-	df_3=pd.read_excel('/home/ekcontar/group/group03.xlsx')
-	df_4=pd.read_excel('/home/ekcontar/group/group04.xlsx')
-	df_5=pd.read_excel('/home/ekcontar/group/group05.xlsx')
-	df_6=pd.read_excel('/home/ekcontar/group/group06.xlsx')
-	df_7=pd.read_excel('/home/ekcontar/group/group07.xlsx')
+	df_1=pd.read_excel('./input/group/group01.xlsx')
+	df_2=pd.read_excel('./input/group/group02.xlsx')
+	df_3=pd.read_excel('./input/group/group03.xlsx')
+	df_4=pd.read_excel('./input/group/group04.xlsx')
+	df_5=pd.read_excel('./input/group/group05.xlsx')
+	df_6=pd.read_excel('./input/group/group06.xlsx')
+	df_7=pd.read_excel('./input/group/group07.xlsx')
 	df_3=df_3.reset_index()
 	df_7=df_7.dropna()
 	df_7=df_7.reset_index()
@@ -59,10 +59,10 @@ def mask_label():
 
 	#Image filename list and label for asymmetry
 	asymm_label=np.concatenate((a_1, a_2, a_3, a_4, a_5, a_6, a_7))
-	asymm_id=np.concatenate((df_1['ID'],df_2['Afbeelding'],df_3['index'],df_4['ID'],df_5['ID'],df_6['ID'],df_7['ID'])) 
+	asymm_id=np.concatenate((df_1['ID'],df_2['Afbeelding'],df_3['index'],df_4['ID'],df_5['ID'],df_6['ID'],df_7['ID']))
 
 	#Image filename list and label for class
-	df=pd.read_csv('/home/ekcontar/ISIC-2017_Training_Part3_GroundTruth.csv')
+	df=pd.read_csv('./input/groundtruth/ISIC-2017_Training_Part3_GroundTruth.csv')
 	class_label=df['melanoma']
 	class_id=df['image_id']
 
@@ -91,7 +91,7 @@ def generate_data(directory, augmentation, shuffle, batch_size, file_list, label
 						new_label_1.append(shuff_label_1[index])
 					shuff_file_list=new_file_list
 					shuff_label_1=new_label_1
-	
+
 			img=image.load_img(directory+shuff_file_list[i]+'.jpg', grayscale=False, target_size=(384,384))
 			img = image.img_to_array(img)
 			if augmentation==True:
@@ -111,7 +111,7 @@ def generate_data(directory, augmentation, shuffle, batch_size, file_list, label
 			if augmentation==False:
 				img=img/255.0
 			image_batch.append(img)
-			label_1_batch.append(shuff_label_1[i])		
+			label_1_batch.append(shuff_label_1[i])
 			i=i+1
-		
+
 		yield(np.asarray(image_batch), np.asarray(label_1_batch))
