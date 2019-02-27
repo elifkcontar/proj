@@ -38,13 +38,13 @@ def main():
 
 def mask_label():
 	#Label-Asymmetry Score
-	df_1=pd.read_excel('./input/group/group01.xlsx')
-	df_2=pd.read_excel('./input/group/group02.xlsx')
-	df_3=pd.read_excel('./input/group/group03.xlsx')
-	df_4=pd.read_excel('./input/group/group04.xlsx')
-	df_5=pd.read_excel('./input/group/group05.xlsx')
-	df_6=pd.read_excel('./input/group/group06.xlsx')
-	df_7=pd.read_excel('./input/group/group07.xlsx')
+	df_1=pd.read_excel('../../data/group01.xlsx')
+	df_2=pd.read_excel('../../data/group02.xlsx')
+	df_3=pd.read_excel('../../data/group03.xlsx')
+	df_4=pd.read_excel('../../data/group04.xlsx')
+	df_5=pd.read_excel('../../data/group05.xlsx')
+	df_6=pd.read_excel('../../data/group06.xlsx')
+	df_7=pd.read_excel('../../data/group07.xlsx')
 	df_3=df_3.reset_index()
 	df_7=df_7.dropna()
 	df_7=df_7.reset_index()
@@ -62,7 +62,7 @@ def mask_label():
 	asymm_id=np.concatenate((df_1['ID'],df_2['Afbeelding'],df_3['index'],df_4['ID'],df_5['ID'],df_6['ID'],df_7['ID']))
 
 	#Image filename list and label for class
-	df=pd.read_csv('./input/groundtruth/ISIC-2017_Training_Part3_GroundTruth.csv')
+	df=pd.read_csv('../../data/ISIC-2017_Training_Part3_GroundTruth.csv')
 	class_label=df['melanoma']
 	class_id=df['image_id']
 
