@@ -5,6 +5,7 @@ __pycache__/functions.cpython-37.pyc
 
 *.jpg
 
+.idea/
 *.xlsx
 
 *.csv

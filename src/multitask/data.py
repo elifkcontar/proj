@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../')
+import config as cf
+
 import tensorflow as tf
 import keras.backend.tensorflow_backend
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.55)
@@ -47,33 +51,41 @@ def main():
 
 	return(train_id, train_label_c, train_label_a, train_mask, valid_id, valid_label_c, valid_label_a, valid_mask, test_id, test_label_c, test_label_a, test_mask)
 
-def mask_label():	
-	#Label-Asymmetry Score
-	df_1=pd.read_excel('/home/ekcontar/group/group01.xlsx')
-	df_2=pd.read_excel('/home/ekcontar/group/group02.xlsx')
-	df_3=pd.read_excel('/home/ekcontar/group/group03.xlsx')
-	df_4=pd.read_excel('/home/ekcontar/group/group04.xlsx')
-	df_5=pd.read_excel('/home/ekcontar/group/group05.xlsx')
-	df_6=pd.read_excel('/home/ekcontar/group/group06.xlsx')
-	df_7=pd.read_excel('/home/ekcontar/group/group07.xlsx')
-	df_3=df_3.reset_index()
-	df_7=df_7.dropna()
-	df_7=df_7.reset_index()
 
-	a_1 = (preprocessing.scale(df_1['Asymmetry_1_1']) + preprocessing.scale(df_1['Asymmetry_1_2']) + preprocessing.scale(df_1['Asymmetry_1_3']))/3.0
-	a_2 = (preprocessing.scale(df_2['Asymmetrie']) + preprocessing.scale(df_2['Unnamed: 3']) + preprocessing.scale(df_2['Unnamed: 4']))/3.0
-	a_3 = (preprocessing.scale(df_3['Asymmetry_3_1']) + preprocessing.scale(df_3['Asymmetry_3_2']) + preprocessing.scale(df_3['Asymmetry_3_3']))/3.0
-	a_4 = (preprocessing.scale(df_4['Asymmetry_4_1']) + preprocessing.scale(df_4['Asymmetry_4_3']) + preprocessing.scale(df_4['Asymmetry_4_5']))/3.0
-	a_5 = (preprocessing.scale(df_5['Asymmetry_5_1']) + preprocessing.scale(df_5['Asymmetry_5_2']) + preprocessing.scale(df_5['Asymmetry_5_3']))/3.0
-	a_6 = (preprocessing.scale(df_6['Asymmetry_6_1']) + preprocessing.scale(df_6['Asymmetry_6_2'])+ preprocessing.scale(df_6['Asymmetry_6_3']))/3.0
-	a_7 = (preprocessing.scale(df_7['Asymmetry_7_1']) + preprocessing.scale(df_7['Asymmetry_7_2']) + preprocessing.scale(df_7['Asymmetry_7_3']) + preprocessing.scale(df_7['Asymmetry_7_4']) + preprocessing.scale(df_7['Asymmetry_7_5']) + preprocessing.scale(df_7['Asymmetry_7_6']))/6.0
+def mask_label():
+	# Label-Asymmetry Score
+	df_1 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group01.xlsx')
+	df_2 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group02.xlsx')
+	df_3 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group03.xlsx')
+	df_4 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group04.xlsx')
+	df_5 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group05.xlsx')
+	df_6 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group06.xlsx')
+	df_7 = pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group07.xlsx')
+	df_3 = df_3.reset_index()
+	df_7 = df_7.dropna()
+	df_7 = df_7.reset_index()
 
+	a_1 = (preprocessing.scale(df_1['Asymmetry_1_1']) + preprocessing.scale(df_1['Asymmetry_1_2']) + preprocessing.scale(df_1['Asymmetry_1_3'])) / 3.0
+	a_2 = (preprocessing.scale(df_2['Asymmetrie']) + preprocessing.scale(df_2['Unnamed: 3']) + preprocessing.scale(df_2['Unnamed: 4'])) / 3.0
+	a_3 = (preprocessing.scale(df_3['Asymmetry_3_1']) + preprocessing.scale(df_3['Asymmetry_3_2']) + preprocessing.scale(df_3['Asymmetry_3_3'])) / 3.0
+	a_4 = (preprocessing.scale(df_4['Asymmetry_4_1']) + preprocessing.scale(df_4['Asymmetry_4_3']) + preprocessing.scale(df_4['Asymmetry_4_5'])) / 3.0
+	a_5 = (preprocessing.scale(df_5['Asymmetry_5_1']) + preprocessing.scale(df_5['Asymmetry_5_2']) + preprocessing.scale(df_5['Asymmetry_5_3'])) / 3.0
+	a_6 = (preprocessing.scale(df_6['Asymmetry_6_1']) + preprocessing.scale(df_6['Asymmetry_6_2']) + preprocessing.scale(df_6['Asymmetry_6_3'])) / 3.0
+	a_7 = (preprocessing.scale(df_7['Asymmetry_7_1']) + preprocessing.scale(
+		df_7['Asymmetry_7_2']) + preprocessing.scale(df_7['Asymmetry_7_3']) + preprocessing.scale(
+		df_7['Asymmetry_7_4']) + preprocessing.scale(df_7['Asymmetry_7_5']) + preprocessing.scale(
+		df_7['Asymmetry_7_6'])) / 6.0
+
+	# Image filename list and label for asymmetry
+	asymm_label = np.concatenate((a_1, a_2, a_3, a_4, a_5, a_6, a_7))
+	asymm_id = np.concatenate(
+		(df_1['ID'], df_2['Afbeelding'], df_3['index'], df_4['ID'], df_5['ID'], df_6['ID'], df_7['ID']))
 	#Image filename list and label for asymmetry
 	asymm_label=np.concatenate((a_1, a_2, a_3, a_4, a_5, a_6, a_7))
 	asymm_id=np.concatenate((df_1['ID'],df_2['Afbeelding'],df_3['index'],df_4['ID'],df_5['ID'],df_6['ID'],df_7['ID'])) 
 
 	#Image filename list and label for class
-	df=pd.read_csv('/home/ekcontar/ISIC-2017_Training_Part3_GroundTruth.csv')
+	df = pd.read_csv(cf.DATA_CONFIG['data_folder'] + 'csv/ISIC-2017_Training_Part3_GroundTruth.csv')
 	class_label=df['melanoma']
 	class_id=df['image_id']
 	
