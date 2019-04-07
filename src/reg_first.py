@@ -1,5 +1,5 @@
 import sys
-sys.path.append('./')
+sys.path.append('../')
 import config as cf
 
 import tensorflow as tf
@@ -53,10 +53,10 @@ history=model.fit_generator(dataa,
 
 #save model to JSON
 model_json = model.to_json()
-with open(cf.DATA_CONFIG['data_folder'] + "weights/reg_first.json", "w") as json_file:
+with open(cf.DATA_CONFIG['project_folder'] + "weights/reg_first.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights(cf.DATA_CONFIG['data_folder'] + "weights/reg_first.h5")
+model.save_weights(cf.DATA_CONFIG['project_folder'] + "weights/reg_first.h5")
 print("Saved model to disk")
 
 # list all data in history

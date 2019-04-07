@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append('../../')
 import config as cf
 
 import tensorflow as tf
@@ -45,21 +45,21 @@ history=model.fit_generator(train, steps_per_epoch=40, epochs=200,  class_weight
 
 #save model to JSON
 model_json = model.to_json()
-with open(cf.DATA_CONFIG['data_folder'] + "weights/mu.json", "w") as json_file:
+with open(cf.DATA_CONFIG['project_folder'] + "weights/mu.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights(cf.DATA_CONFIG['data_folder'] + "weights/mu.h5")
+model.save_weights(cf.DATA_CONFIG['project_folder'] + "weights/mu.h5")
 print("Saved first model to disk")
 
 
 #Second part, train model with all layers
 #Load model
-json_file = open(cf.DATA_CONFIG['data_folder'] + 'weights/mu.json', 'r')
+json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/mu.json', 'r')
 model_json = json_file.read()
 json_file.close()
 model = model_from_json(model_json)
 #Load weights into new model
-model.load_weights(cf.DATA_CONFIG['data_folder'] + "weights/mu.h5")
+model.load_weights(cf.DATA_CONFIG['project_folder'] + "weights/mu.h5")
 print("Loaded model from disk")
 
 for layer in model.layers:
@@ -74,10 +74,10 @@ history=model.fit_generator(train, steps_per_epoch=40, epochs=60,  class_weight=
 
 #save model to JSON
 model_json = model.to_json()
-with open(cf.DATA_CONFIG['data_folder'] + "weights/multi.json", "w") as json_file:
+with open(cf.DATA_CONFIG['project_folder'] + "weights/multi.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights(cf.DATA_CONFIG['data_folder'] + "weights/multi.h5")
+model.save_weights(cf.DATA_CONFIG['project_folder'] + "weights/multi.h5")
 print("Saved second model to disk")
 
 

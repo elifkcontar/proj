@@ -1,5 +1,5 @@
 import sys
-sys.path.append('./')
+sys.path.append('../')
 import config as cf
 
 import tensorflow as tf
@@ -22,12 +22,12 @@ validation=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/'
 test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=False, batch_size=10, file_list=test_file, label=test_label)
 print('burada test= dediğim işlemi yaptım')
 #Load model
-json_file = open(cf.DATA_CONFIG['data_folder'] + 'reg_second.json', 'r')
+json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/reg_second.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 #Load weights into new model
-loaded_model.load_weights(cf.DATA_CONFIG['data_folder'] + "reg_second.h5")
+loaded_model.load_weights(cf.DATA_CONFIG['project_folder'] + "weights/reg_second.h5")
 print("Loaded model from disk")
 
 

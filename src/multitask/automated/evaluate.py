@@ -7,7 +7,7 @@ keras.backend.tensorflow_backend.set_session(session)
 '''
 
 import sys
-sys.path.append('.../')
+sys.path.append('../../../')
 import config as cf
 
 import numpy as np
@@ -27,12 +27,12 @@ test_label_a=np.zeros(600) #redundant label to use generator, won't be used late
 test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'crop_test/', augmentation=False, shuffle=False, batch_size=10, file_list=test_id, label_1=test_label_c, label_2=test_label_a)
 
 #Load model
-json_file = open(cf.DATA_CONFIG['data_folder'] + 'weights/multitaska_1.json', 'r')
+json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/multitaska_1.json', 'r')
 model_json = json_file.read()
 json_file.close()
 load_model = model_from_json(model_json)
 #Load weights
-load_model.load_weights(cf.DATA_CONFIG['data_folder'] + 'weights/multitaska_1.h5')
+load_model.load_weights(cf.DATA_CONFIG['project_folder'] + 'weights/multitaska_1.h5')
 print("Loaded model from disk")
 
 #Compile model

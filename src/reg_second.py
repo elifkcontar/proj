@@ -1,5 +1,5 @@
 import sys
-sys.path.append('./')
+sys.path.append('../')
 import config as cf
 
 import tensorflow as tf
@@ -21,12 +21,12 @@ validation=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/'
 test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=False, batch_size=10, file_list=test_file, label=test_label)
 
 #Load model
-json_file = open(cf.DATA_CONFIG['data_folder'] + 'reg_first.json', 'r')
+json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/reg_first.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 #Load weights into new model
-loaded_model.load_weights(cf.DATA_CONFIG['data_folder'] + "reg_first.h5")
+loaded_model.load_weights(cf.DATA_CONFIG['data_folder'] + "weights/reg_first.h5")
 print("Loaded model from disk")
 
 for layer in loaded_model.layers:
@@ -52,10 +52,10 @@ history=loaded_model.fit_generator(train,
 
 #save model to JSON
 model_json = loaded_model.to_json()
-with open(cf.DATA_CONFIG['data_folder'] + "reg_second.json", "w") as json_file:
+with open(cf.DATA_CONFIG['project_folder'] + "weights/reg_second.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-loaded_model.save_weights(cf.DATA_CONFIG['data_folder'] + "reg_second.h5")
+loaded_model.save_weights(cf.DATA_CONFIG['project_folder'] + "weights/reg_second.h5")
 print("Saved model to disk")
 
 

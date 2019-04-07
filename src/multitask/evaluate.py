@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append('../../')
 import config as cf
 
 import tensorflow as tf
@@ -22,12 +22,12 @@ train_id, train_label_c, train_label_a, train_mask, valid_id, valid_label_c, val
 test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', augmentation=False, shuffle=False, batch_size=10, file_list=test_id, label_1=test_label_c, label_2=test_label_a, mask=test_mask)
 
 #Load model
-json_file = open(cf.DATA_CONFIG['data_folder'] + 'weights/multi.json', 'r')
+json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/multi.json', 'r')
 model_json = json_file.read()
 json_file.close()
 load_model = model_from_json(model_json)
 #Load weights into new model
-load_model.load_weights(cf.DATA_CONFIG['data_folder'] + 'weights/multi.h5')
+load_model.load_weights(cf.DATA_CONFIG['project_folder'] + 'weights/multi.h5')
 print("Loaded model from disk")
 
 
@@ -86,7 +86,7 @@ for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
 plt.tight_layout()
 plt.ylabel('True label')
 plt.xlabel('Predicted label')
-plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Multitask_Confusion_Matrix.png')
+plt.savefig(cf.DATA_CONFIG['project_folder'] + 'reports/Multitask_Confusion_Matrix.png')
 
 
 #ROC curve and score
@@ -103,7 +103,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.legend(loc="lower right")
 plt.title('Receiver operating characteristic')
-plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Multitask_ROC.png')
+plt.savefig(cf.DATA_CONFIG['project_folder'] + 'reports/Multitask_ROC.png')
 
 
 #Calcuate correlation coefficient
@@ -150,6 +150,6 @@ plt.ylabel("predicted")
 plt.figtext(0.01, 0.95, 'corr_coef='+str(r), fontsize=10)
 plt.figtext(0.01, 0.92, 'hi='+str(hi), fontsize=10)
 plt.figtext(0.01, 0.89, 'lo='+str(lo), fontsize=10)
-plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Multitask_Correlation_Scatter_Plot.png')
+plt.savefig(cf.DATA_CONFIG['project_folder'] + 'reports/Multitask_Correlation_Scatter_Plot.png')
 
 
