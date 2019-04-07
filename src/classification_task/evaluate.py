@@ -22,12 +22,12 @@ train_id, train_label_c, valid_id, valid_label_c, test_id, test_label_c=main()
 test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', augmentation=False, shuffle=False, batch_size=10, file_list=test_id, label_1=test_label_c)
 
 #Load model
-json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/class.json', 'r')
+json_file = open(cf.DATA_CONFIG['data_folder'] + 'weights/class.json', 'r')
 model_json = json_file.read()
 json_file.close()
 load_model = model_from_json(model_json)
 #Load weights into new model
-load_model.load_weights(cf.DATA_CONFIG['project_folder'] + "weights/class.h5")
+load_model.load_weights(cf.DATA_CONFIG['data_folder'] + "weights/class.h5")
 print("Loaded model from disk")
 
 #Make prediction for class
@@ -60,7 +60,7 @@ for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
 plt.tight_layout()
 plt.ylabel('True label')
 plt.xlabel('Predicted label')
-plt.savefig(cf.DATA_CONFIG['project_folder'] + 'reports/Classification_Confusion_Matrix.png')
+plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Classification_Confusion_Matrix.png')
 
 #ROC curve and score
 fpr = dict()
@@ -76,5 +76,5 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Receiver operating characteristic')
 plt.legend(loc="lower right")
-plt.savefig(cf.DATA_CONFIG['project_folder'] + 'reports/Classification_ROC_Plot.png')
+plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Classification_ROC_Plot.png')
 

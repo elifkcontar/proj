@@ -1,3 +1,7 @@
+import sys
+sys.path.append('.../')
+import config as cf
+
 '''
 import tensorflow as tf
 import keras.backend.tensorflow_backend
@@ -16,9 +20,9 @@ import matplotlib.pyplot as plt
 #Read data
 train_id, train_label_c, train_label_a, valid_id, valid_label_c, valid_label_a=main()
 
-train=generate_data(directory='/home/ekcontar/dat/', augmentation=True, shuffle=True, batch_size=10, file_list=train_id, label_1=train_label_c, label_2=train_label_a)
+train=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', augmentation=True, shuffle=True, batch_size=10, file_list=train_id, label_1=train_label_c, label_2=train_label_a)
 
-validation=generate_data(directory='/home/ekcontar/dat/', augmentation=False, shuffle=True, batch_size=10, file_list=valid_id, label_1=valid_label_c, label_2=valid_label_a)
+validation=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', augmentation=False, shuffle=True, batch_size=10, file_list=valid_id, label_1=valid_label_c, label_2=valid_label_a)
 
 
 #Build the model
@@ -42,21 +46,21 @@ history=model.fit_generator(train, steps_per_epoch=40, epochs=200,  class_weight
 
 #save model to JSON
 model_json = model.to_json()
-with open("mua_1.json", "w") as json_file:
+with open(cf.DATA_CONFIG['data_folder'] + "weights/mua_1.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights("mua_1.h5")
+model.save_weights(cf.DATA_CONFIG['data_folder'] + "weights/mua_1.h5")
 print("Saved first model to disk")
 
 
 #Second part, train model with all layers
 #Load model
-json_file = open('mua_1.json', 'r')
+json_file = open(cf.DATA_CONFIG['data_folder'] + 'weights/mua_1.json', 'r')
 model_json = json_file.read()
 json_file.close()
 model = model_from_json(model_json)
 #Load weights
-model.load_weights("mua_1.h5")
+model.load_weights(cf.DATA_CONFIG['data_folder'] + "weights/mua_1.h5")
 print("Loaded model from disk")
 
 for layer in model.layers:
@@ -71,10 +75,10 @@ history=model.fit_generator(train, steps_per_epoch=40, epochs=60,  class_weight=
 
 #save model to JSON
 model_json = model.to_json()
-with open("multitaska_1.json", "w") as json_file:
+with open(cf.DATA_CONFIG['data_folder'] + "weights/multitaska_1.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights("multitaska_1.h5")
+model.save_weights(cf.DATA_CONFIG['data_folder'] + "weights/multitaska_1.h5")
 print("Saved second model to disk")
 
 

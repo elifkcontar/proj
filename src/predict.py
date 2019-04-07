@@ -1,3 +1,7 @@
+import sys
+sys.path.append('./')
+import config as cf
+
 import tensorflow as tf
 import keras.backend.tensorflow_backend
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.55)
@@ -13,17 +17,17 @@ from scipy import stats
 		
 
 train_file, train_label, validation_file, validation_label, test_file, test_label=file_list()
-train=generate_data(directory='/home/ekcontar/dat/', mode='augmentation', shuffle=True, batch_size=10, file_list=train_file, label=train_label)
-validation=generate_data(directory='/home/ekcontar/dat/', mode='rescale', shuffle=True, batch_size=10, file_list=validation_file, label=validation_label)
-test=generate_data(directory='/home/ekcontar/dat/', mode='rescale', shuffle=False, batch_size=10, file_list=test_file, label=test_label)
+train=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='augmentation', shuffle=True, batch_size=10, file_list=train_file, label=train_label)
+validation=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=True, batch_size=10, file_list=validation_file, label=validation_label)
+test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=False, batch_size=10, file_list=test_file, label=test_label)
 print('burada test= dediğim işlemi yaptım')
 #Load model
-json_file = open('reg_second.json', 'r')
+json_file = open(cf.DATA_CONFIG['data_folder'] + 'reg_second.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 #Load weights into new model
-loaded_model.load_weights("reg_second.h5")
+loaded_model.load_weights(cf.DATA_CONFIG['data_folder'] + "reg_second.h5")
 print("Loaded model from disk")
 
 

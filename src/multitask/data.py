@@ -72,9 +72,9 @@ def mask_label():
 	a_5 = (preprocessing.scale(df_5['Asymmetry_5_1']) + preprocessing.scale(df_5['Asymmetry_5_2']) + preprocessing.scale(df_5['Asymmetry_5_3'])) / 3.0
 	a_6 = (preprocessing.scale(df_6['Asymmetry_6_1']) + preprocessing.scale(df_6['Asymmetry_6_2']) + preprocessing.scale(df_6['Asymmetry_6_3'])) / 3.0
 	a_7 = (preprocessing.scale(df_7['Asymmetry_7_1']) + preprocessing.scale(
-		df_7['Asymmetry_7_2']) + preprocessing.scale(df_7['Asymmetry_7_3']) + preprocessing.scale(
-		df_7['Asymmetry_7_4']) + preprocessing.scale(df_7['Asymmetry_7_5']) + preprocessing.scale(
-		df_7['Asymmetry_7_6'])) / 6.0
+	df_7['Asymmetry_7_2']) + preprocessing.scale(df_7['Asymmetry_7_3']) + preprocessing.scale(
+	df_7['Asymmetry_7_4']) + preprocessing.scale(df_7['Asymmetry_7_5']) + preprocessing.scale(
+	df_7['Asymmetry_7_6'])) / 6.0
 
 	# Image filename list and label for asymmetry
 	asymm_label = np.concatenate((a_1, a_2, a_3, a_4, a_5, a_6, a_7))

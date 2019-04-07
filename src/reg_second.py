@@ -1,3 +1,7 @@
+import sys
+sys.path.append('./')
+import config as cf
+
 import tensorflow as tf
 import keras.backend.tensorflow_backend
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.55)
@@ -12,17 +16,17 @@ from functions import file_list, generate_data
 
 
 train_file, train_label, validation_file, validation_label, test_file, test_label=file_list()
-train=generate_data(directory='/home/ekcontar/dat/', mode='augmentation', shuffle=True, batch_size=10, file_list=train_file, label=train_label)
-validation=generate_data(directory='/home/ekcontar/dat/', mode='rescale', shuffle=True, batch_size=10, file_list=validation_file, label=validation_label)
-test=generate_data(directory='/home/ekcontar/dat/', mode='rescale', shuffle=False, batch_size=10, file_list=test_file, label=test_label)
+train=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='augmentation', shuffle=True, batch_size=10, file_list=train_file, label=train_label)
+validation=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=True, batch_size=10, file_list=validation_file, label=validation_label)
+test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=False, batch_size=10, file_list=test_file, label=test_label)
 
 #Load model
-json_file = open('reg_first.json', 'r')
+json_file = open(cf.DATA_CONFIG['data_folder'] + 'reg_first.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 #Load weights into new model
-loaded_model.load_weights("reg_first.h5")
+loaded_model.load_weights(cf.DATA_CONFIG['data_folder'] + "reg_first.h5")
 print("Loaded model from disk")
 
 for layer in loaded_model.layers:
@@ -48,10 +52,10 @@ history=loaded_model.fit_generator(train,
 
 #save model to JSON
 model_json = loaded_model.to_json()
-with open("reg_second.json", "w") as json_file:
+with open(cf.DATA_CONFIG['data_folder'] + "reg_second.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-loaded_model.save_weights("reg_second.h5")
+loaded_model.save_weights(cf.DATA_CONFIG['data_folder'] + "reg_second.h5")
 print("Saved model to disk")
 
 

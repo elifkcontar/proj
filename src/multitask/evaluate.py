@@ -1,6 +1,10 @@
+import sys
+sys.path.append('../')
+import config as cf
+
 import tensorflow as tf
 import keras.backend.tensorflow_backend
-gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.15)
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.65)
 session = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 keras.backend.tensorflow_backend.set_session(session)
 
@@ -82,7 +86,7 @@ for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
 plt.tight_layout()
 plt.ylabel('True label')
 plt.xlabel('Predicted label')
-plt.savefig('Multitask_Confusion_Matrix.png')
+plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Multitask_Confusion_Matrix.png')
 
 
 #ROC curve and score
@@ -99,7 +103,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.legend(loc="lower right")
 plt.title('Receiver operating characteristic')
-plt.savefig('Multitask_ROC.png')
+plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Multitask_ROC.png')
 
 
 #Calcuate correlation coefficient
@@ -146,6 +150,6 @@ plt.ylabel("predicted")
 plt.figtext(0.01, 0.95, 'corr_coef='+str(r), fontsize=10)
 plt.figtext(0.01, 0.92, 'hi='+str(hi), fontsize=10)
 plt.figtext(0.01, 0.89, 'lo='+str(lo), fontsize=10)
-plt.savefig('Correlation_Scatter_Plot.png')
+plt.savefig(cf.DATA_CONFIG['data_folder'] + 'reports/Multitask_Correlation_Scatter_Plot.png')
 
 
