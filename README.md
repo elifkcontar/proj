@@ -52,11 +52,11 @@ predict.py: Same with evaluate.py
 # Running the Project
 
 
-1) All your data must be in following format:
-    data_folder/  
-     &nbsp;   group/ (This folder must contain all the group.xlsx files) </br>  
-     &nbsp;   csv/ (This folder must contain the ground truth csv file) </br>  
-     &nbsp;   image_data/ (This folder must contain all the images to be used) </br>  
+1) All your data must be in following format: </br>  
+    **data_folder/**</br>    
+     &nbsp;   **group/** (This folder must contain all the group.xlsx files) </br>  
+     &nbsp;   **csv/** (This folder must contain the ground truth csv file) </br>  
+     &nbsp;   **image_data/** (This folder must contain all the images to be used) </br>  
      
      
         
