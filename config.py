@@ -1,6 +1,6 @@
 from os.path import dirname, abspath
-
-d = dirname(dirname(abspath(__file__)))
+import os
+d = dirname(os.getcwd())
 d = d + '/'
 # dir_of_file = dirname(d)
 # parent_dir_of_file = dirname(dir_of_file)
