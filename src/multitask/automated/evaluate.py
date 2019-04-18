@@ -6,6 +6,10 @@ session = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 keras.backend.tensorflow_backend.set_session(session)
 '''
 
+import sys
+sys.path.append('../../../')
+import config as cf
+
 import numpy as np
 import pandas as pd
 from data import main, generate_data
@@ -14,21 +18,21 @@ from keras.models import model_from_json
 import matplotlib.pyplot as plt
 
 #Read test data
-df=pd.read_csv("/home/ekcontar/ISIC-2017_Test_v2_Part3_GroundTruth.csv") #csv file contains image_id and melanoma label
+df=pd.read_csv(cf.DATA_CONFIG['data_folder'] + 'csv/ISIC-2017_Training_Part3_GroundTruth.csv') #csv file contains image_id and melanoma label
 test_id=df['image_id']	#image_id list
 test_label_c=df['melanoma']	#binary label
 test_label_a=np.zeros(600) #redundant label to use generator, won't be used later
 
 #Call data generater
-test=generate_data(directory='/home/ekcontar/crop_test/', augmentation=False, shuffle=False, batch_size=10, file_list=test_id, label_1=test_label_c, label_2=test_label_a)
+test=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'crop_test/', augmentation=False, shuffle=False, batch_size=10, file_list=test_id, label_1=test_label_c, label_2=test_label_a)
 
 #Load model
-json_file = open('multitaska_1.json', 'r')
+json_file = open(cf.DATA_CONFIG['project_folder'] + 'weights/multitaska_1.json', 'r')
 model_json = json_file.read()
 json_file.close()
 load_model = model_from_json(model_json)
 #Load weights
-load_model.load_weights("multitaska_1.h5")
+load_model.load_weights(cf.DATA_CONFIG['project_folder'] + 'weights/multitaska_1.h5')
 print("Loaded model from disk")
 
 #Compile model

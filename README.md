@@ -15,7 +15,6 @@ https://docs.google.com/document/d/1vpkeLOE9TGPD60vVkt1V31B5VhHm41phCnWM0klG4VA/
 
 
 # Folders
-**cache:** Preprocessed datasets that don’t need to be re-generated every time you perform an analysis.<br/>
 **config:** Configuration settings for the project<br/>
 **data:** Soft linked data files.<br/>
 **src:** Scripts.<br/>
@@ -48,3 +47,19 @@ predict.py: Same with evaluate.py
 # Summary of other files
 **README:** Notes that orient any newcomers to the project.<br/>
 **TODO:** list of future improvements and bug fixes you plan to make.<br/>
+
+
+# Running the Project
+
+
+1) All your data must be in following format: </br>  
+    **data_folder/**</br>    
+     &nbsp;   **group/** (This folder must contain all the group.xlsx files) </br>  
+     &nbsp;   **csv/** (This folder must contain the ground truth csv file) </br>  
+     &nbsp;   **image_data/** (This folder must contain all the images to be used) </br>  
+
+2) You must then set the path of your data in the config.py file by changing the value of the "data_folder" key. Set it to the path of data_folder. </br>  
+**For ex:** If the location of all the above 3 folders is in folder called Test located in the home folder, then the data_folder key will have "/home/{your_username}/Test/". </br>  
+**Note: It is important to get this path right and that you set it up correctly. Also do not forget to add the '/' at the end of your path**
+
+3) Lastly, to start jupyter notebook, make sure you run `jupyter notebook --NotebookApp.iopub_data_rate_limit=10000000000` so as to ensure that all the output is printed

@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../')
+import config as cf
+
 import pandas as pd
 import random
 from sklearn import preprocessing
@@ -7,13 +11,13 @@ import numpy as np
 
 def file_list():	
 	#Label-Asymmetry Score
-	df_1=pd.read_excel('/home/ekcontar/group/group01.xlsx')
-	df_2=pd.read_excel('/home/ekcontar/group/group02.xlsx')
-	df_3=pd.read_excel('/home/ekcontar/group/group03.xlsx')
-	df_4=pd.read_excel('/home/ekcontar/group/group04.xlsx')
-	df_5=pd.read_excel('/home/ekcontar/group/group05.xlsx')
-	df_6=pd.read_excel('/home/ekcontar/group/group06.xlsx')
-	df_7=pd.read_excel('/home/ekcontar/group/group07.xlsx')
+	df_1=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group01.xlsx')
+	df_2=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group02.xlsx')
+	df_3=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group03.xlsx')
+	df_4=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group04.xlsx')
+	df_5=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group05.xlsx')
+	df_6=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group06.xlsx')
+	df_7=pd.read_excel(cf.DATA_CONFIG['data_folder'] + 'group/group07.xlsx')
 	df_3=df_3.reset_index()
 	df_7=df_7.dropna()
 	df_7=df_7.reset_index()

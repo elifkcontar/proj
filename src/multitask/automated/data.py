@@ -1,6 +1,9 @@
-
 '''main function returns image_id list, asymmetry and binary label. Split them into training and validation set
 '''
+
+import sys
+sys.path.append('../../../')
+import config as cf
 
 import tensorflow as tf
 import keras.backend.tensorflow_backend
@@ -19,11 +22,11 @@ import numpy as np
 def main():
 
 	#Label-Asymmetry Score
-	df_1=pd.read_csv('/home/ekcontar/auto_asymmetry_group6.csv') #automated asymmtry score csv file
+	df_1=pd.read_csv(cf.DATA_CONFIG['data_folder'] + 'csv/auto_asymmetry_group6.csv') #automated asymmtry score csv file
 	asymm_label=preprocessing.scale(df_1['asymmetry'])
 
 	#Image filename list and label for class
-	df=pd.read_csv('/home/ekcontar/ISIC-2017_Training_Part3_GroundTruth.csv') #melanoma label csv file
+	df=pd.read_csv(cf.DATA_CONFIG['data_folder'] + 'csv/ISIC-2017_Training_Part3_GroundTruth.csv') #melanoma label csv file
 	class_label=df['melanoma']
 	class_id=df['image_id']	
 	

@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../')
+import config as cf
+
 import tensorflow as tf
 import keras.backend.tensorflow_backend
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.55)
@@ -14,8 +18,8 @@ from functions import file_list, generate_data
 
 
 train_file, train_label, validation_file, validation_label, test_file, test_label=file_list()
-dataa=generate_data(directory='/home/ekcontar/dat/', mode='augmentation', shuffle=True, batch_size=10, file_list=train_file, label=train_label)
-validation=generate_data(directory='/home/ekcontar/dat/', mode='rescale', shuffle=True, batch_size=10, file_list=validation_file, label=validation_label)
+dataa=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='augmentation', shuffle=True, batch_size=10, file_list=train_file, label=train_label)
+validation=generate_data(directory=cf.DATA_CONFIG['data_folder'] + 'image_data/', mode='rescale', shuffle=True, batch_size=10, file_list=validation_file, label=validation_label)
 
 
 img_height, img_width, img_channel=384,384,3
@@ -27,7 +31,7 @@ for layer in vgg_new_model.layers[:-5]:
 result=Dense(100, activation='relu')(vgg_new_model.output)
 result=Dense(100, activation='relu')(result)
 result=Dense(1, activation='linear', kernel_initializer='glorot_uniform')(result)
-model      = Model(inputs=vgg_new_model.input, outputs=result)
+model = Model(inputs=vgg_new_model.input, outputs=result)
 model.summary()
 for layer in vgg_new_model.layers:
     print(layer, layer.trainable)
@@ -49,10 +53,10 @@ history=model.fit_generator(dataa,
 
 #save model to JSON
 model_json = model.to_json()
-with open("reg_first.json", "w") as json_file:
+with open(cf.DATA_CONFIG['project_folder'] + "weights/reg_first.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights("reg_first.h5")
+model.save_weights(cf.DATA_CONFIG['project_folder'] + "weights/reg_first.h5")
 print("Saved model to disk")
 
 # list all data in history
